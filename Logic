@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+
+public class test {
+    public static void main(String[] args) {
+        double ranDouble = (Math.random() * 20) + 1;
+        int ranNum = (int) Math.round(ranDouble);
+        System.out.println("Welcome to the Number Guessing Game!");
+        Scanner scanner = new Scanner(System.in);
+        int score = 20;
+        while (true) {
+            System.out.println("Choose a number between 1 and 20");
+            int userGuess = scanner.nextInt();
+            if (userGuess < 1 || userGuess > 20){
+                System.out.println("Invalid number. Please choose a number between 1 and 20.");
+            } else if (userGuess < ranNum){
+                System.out.println("Number is too low.");
+                score--;
+                System.out.println("Score: " + score);
+                System.out.println("\n");
+            } else if (userGuess > ranNum){
+                System.out.println("Number is too high.");
+                score--;
+                System.out.println("Score: " + score);
+                System.out.println("\n");
+            } else if (userGuess == ranNum){
+                System.out.println("Congratulations! You guessed the correct number: " + ranNum);
+                System.out.println("Score: " + score);
+                break;
+            }
+            if (score == 0){
+                System.out.println("You lose.");
+                break;
+            }
+        }
+        scanner.close();
+    }
+
+}
+
